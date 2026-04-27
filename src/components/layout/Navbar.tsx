@@ -53,7 +53,7 @@ export function Navbar() {
         <div className="flex items-center gap-2">
           <ThemeToggle />
           <a
-            href={`${APP_URL}/login`}
+            href={APP_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="hidden md:inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold border border-white/30 hover:border-white/60 text-white/80 hover:text-white transition-colors"
@@ -101,7 +101,7 @@ export function Navbar() {
             </li>
             <li>
               <a
-                href={`${APP_URL}/login`}
+                href={APP_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center gap-2 mt-1 px-4 py-2 rounded-lg text-center font-semibold border border-white/30 text-white/80 hover:text-white transition-colors"
