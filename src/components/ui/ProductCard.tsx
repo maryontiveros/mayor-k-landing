@@ -21,17 +21,12 @@ export function ProductCard({ product }: { product: PublicProduct }) {
         )}
       </div>
       <div className="p-4 flex flex-col gap-1">
-        <p className="text-[10px] font-semibold uppercase tracking-wide text-[#fa6f00]">
-          {product.category.name}
-        </p>
         <h3 className="text-sm font-semibold text-[var(--foreground)] leading-snug line-clamp-2">
           {product.name}
         </h3>
-        {product.description && (
-          <p className="text-xs text-[var(--muted-foreground)] line-clamp-2 mt-1">
-            {product.description}
-          </p>
-        )}
+        <p className="text-sm font-bold text-[#fa6f00] mt-1">
+          ${product.price.toFixed(2)}
+        </p>
       </div>
     </div>
   )

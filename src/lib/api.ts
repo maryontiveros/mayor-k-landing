@@ -18,6 +18,7 @@ export interface PublicProduct {
   code: string
   name: string
   description: string
+  price: number
   categoryId: number
   category: { id: number; name: string }
   images: ProductImage[]

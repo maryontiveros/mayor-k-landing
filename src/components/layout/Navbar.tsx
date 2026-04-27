@@ -9,7 +9,7 @@ import { ThemeToggle } from '@/components/ui/ThemeToggle'
 const navLinks = [
   { label: 'Inicio', href: '#inicio' },
   { label: 'Nosotros', href: '#nosotros' },
-  { label: 'Categorías', href: '#categorias' },
+  { label: 'Productos', href: '#productos' },
   { label: '¿Por qué nosotros?', href: '#ventajas' },
   { label: 'Contacto', href: '#contacto' },
 ]
@@ -32,7 +32,7 @@ export function Navbar() {
     >
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
         <Link href="#inicio" className="flex items-center gap-2 shrink-0">
-          <Image src="/LogoMayorK.png" alt="Mayor K" width={100} height={40} className="h-9 w-auto" />
+          <Image src="/LogoMayorK_t.png" alt="Mayor K" width={100} height={40} className="h-9 w-auto" />
         </Link>
 
         <ul className="hidden md:flex items-center gap-6">

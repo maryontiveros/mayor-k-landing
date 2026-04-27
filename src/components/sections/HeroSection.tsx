@@ -29,7 +29,7 @@ export function HeroSection() {
       <div className="relative z-10 text-center text-white px-4 sm:px-6 max-w-4xl mx-auto">
         <div className="flex justify-center mb-8">
           <Image
-            src="/LogoMayorK.png"
+            src="/LogoMayorK_t.png"
             alt="Mayor K"
             width={220}
             height={90}
