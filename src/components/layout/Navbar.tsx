@@ -3,8 +3,10 @@
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { Menu, X } from 'lucide-react'
+import { Menu, X, LogIn } from 'lucide-react'
 import { ThemeToggle } from '@/components/ui/ThemeToggle'
+
+const APP_URL = process.env.NEXT_PUBLIC_APP_URL || '#'
 
 const navLinks = [
   { label: 'Inicio', href: '#inicio' },
@@ -50,6 +52,15 @@ export function Navbar() {
 
         <div className="flex items-center gap-2">
           <ThemeToggle />
+          <a
+            href={`${APP_URL}/login`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden md:inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold border border-white/30 hover:border-white/60 text-white/80 hover:text-white transition-colors"
+          >
+            <LogIn size={15} />
+            Acceso
+          </a>
           <Link
             href="/catalogo"
             className="hidden md:inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold bg-[#fa6f00] hover:bg-[#c95900] text-white transition-colors"
@@ -87,6 +98,17 @@ export function Navbar() {
               >
                 Ver Catálogo
               </Link>
+            </li>
+            <li>
+              <a
+                href={`${APP_URL}/login`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-2 mt-1 px-4 py-2 rounded-lg text-center font-semibold border border-white/30 text-white/80 hover:text-white transition-colors"
+              >
+                <LogIn size={15} />
+                Acceso vendedores
+              </a>
             </li>
           </ul>
         </div>
