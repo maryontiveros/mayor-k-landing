@@ -5,6 +5,7 @@ import { Search, Package } from 'lucide-react'
 import Link from 'next/link'
 import { PublicProduct } from '@/lib/api'
 import { ProductCard } from './ProductCard'
+import { ProductModal } from './ProductModal'
 
 interface Props {
   products: PublicProduct[]
@@ -13,6 +14,7 @@ interface Props {
 
 export function ProductsClient({ products, categoryId }: Props) {
   const [query, setQuery] = useState('')
+  const [selected, setSelected] = useState<PublicProduct | null>(null)
 
   const filtered = query.trim()
     ? products.filter((p) =>
@@ -22,6 +24,7 @@ export function ProductsClient({ products, categoryId }: Props) {
 
   return (
     <>
+      {selected && <ProductModal product={selected} onClose={() => setSelected(null)} />}
       <div className="relative mb-6 max-w-sm">
         <Search
           size={15}
@@ -39,7 +42,7 @@ export function ProductsClient({ products, categoryId }: Props) {
       {filtered.length > 0 ? (
         <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-7 gap-3">
           {filtered.map((product) => (
-            <ProductCard key={product.code} product={product} />
+            <ProductCard key={product.code} product={product} onClick={() => setSelected(product)} />
           ))}
         </div>
       ) : (

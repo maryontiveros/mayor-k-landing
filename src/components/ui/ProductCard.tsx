@@ -2,11 +2,11 @@ import Image from 'next/image'
 import { Package } from 'lucide-react'
 import { PublicProduct } from '@/lib/api'
 
-export function ProductCard({ product }: { product: PublicProduct }) {
+export function ProductCard({ product, onClick }: { product: PublicProduct; onClick?: () => void }) {
   const firstImage = product.images[0]
 
   return (
-    <div className="group flex flex-col rounded-2xl bg-[var(--card)] border border-[var(--border)] overflow-hidden hover:shadow-md hover:border-[#fa6f00]/40 transition-all duration-200">
+    <div onClick={onClick} className={`group flex flex-col rounded-2xl bg-[var(--card)] border border-[var(--border)] overflow-hidden hover:shadow-md hover:border-[#fa6f00]/40 transition-all duration-200 ${onClick ? 'cursor-pointer' : ''}`}>
       <div className="relative aspect-[4/3] bg-[var(--muted)] flex items-center justify-center overflow-hidden">
         {firstImage ? (
           <Image
