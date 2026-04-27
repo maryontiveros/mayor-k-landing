@@ -7,22 +7,22 @@ function CategoryCard({ category }: { category: PublicCategory }) {
   return (
     <Link
       href={`/catalogo?categoria=${category.id}`}
-      className="group flex flex-col items-center gap-3 p-5 rounded-2xl bg-[var(--card)] border border-[var(--border)] hover:border-[#fa6f00]/50 hover:shadow-lg transition-all duration-200 w-full"
+      className="group flex flex-col rounded-2xl bg-[var(--card)] border border-[var(--border)] hover:border-[#fa6f00]/50 hover:shadow-lg transition-all duration-200 w-full overflow-hidden"
     >
-      <div className="relative w-20 h-20 rounded-xl overflow-hidden bg-[var(--muted)] flex items-center justify-center shrink-0">
+      <div className="relative aspect-[4/3] bg-[var(--muted)] flex items-center justify-center">
         {category.imageUrl ? (
           <Image
             src={category.imageUrl}
             alt={category.name}
             fill
             className="object-cover group-hover:scale-105 transition-transform duration-300"
-            sizes="80px"
+            sizes="(max-width: 640px) 50vw, 176px"
           />
         ) : (
           <Wrench size={32} className="text-[#fa6f00]" />
         )}
       </div>
-      <div className="text-center">
+      <div className="p-3 text-center">
         <p className="font-semibold text-[var(--foreground)] group-hover:text-[#fa6f00] transition-colors text-sm">
           {category.name}
         </p>
