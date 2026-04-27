@@ -53,17 +53,15 @@ export async function CategoriesSection() {
         </div>
 
         {categories.length > 0 ? (
-          <div className="flex flex-wrap justify-center gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
             {categories.map((cat) => (
-              <div key={cat.id} className="w-[calc(50%-8px)] sm:w-44 md:w-40 lg:w-36">
-                <CategoryCard category={cat} />
-              </div>
+              <CategoryCard key={cat.id} category={cat} />
             ))}
           </div>
         ) : (
-          <div className="flex flex-wrap justify-center gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
             {Array.from({ length: 10 }).map((_, i) => (
-              <div key={i} className="w-[calc(50%-8px)] sm:w-44 md:w-40 lg:w-36 h-36 rounded-2xl bg-[var(--border)] animate-pulse" />
+              <div key={i} className="h-48 rounded-2xl bg-[var(--border)] animate-pulse" />
             ))}
           </div>
         )}
