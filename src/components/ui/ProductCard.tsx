@@ -7,7 +7,7 @@ export function ProductCard({ product }: { product: PublicProduct }) {
 
   return (
     <div className="group flex flex-col rounded-2xl bg-[var(--card)] border border-[var(--border)] overflow-hidden hover:shadow-md hover:border-[#fa6f00]/40 transition-all duration-200">
-      <div className="relative aspect-square bg-[var(--muted)] flex items-center justify-center overflow-hidden">
+      <div className="relative aspect-[4/3] bg-[var(--muted)] flex items-center justify-center overflow-hidden">
         {firstImage ? (
           <Image
             src={firstImage.url}
@@ -20,11 +20,11 @@ export function ProductCard({ product }: { product: PublicProduct }) {
           <Package size={40} className="text-[var(--muted-foreground)]" />
         )}
       </div>
-      <div className="p-4 flex flex-col gap-1">
-        <h3 className="text-sm font-semibold text-[var(--foreground)] leading-snug line-clamp-2">
+      <div className="p-2.5 flex flex-col gap-0.5">
+        <h3 className="text-xs font-semibold text-[var(--foreground)] leading-snug line-clamp-2">
           {product.name}
         </h3>
-        <p className="text-sm font-bold text-[#fa6f00] mt-1">
+        <p className="text-xs font-bold text-[#fa6f00]">
           ${product.price.toFixed(2)}
         </p>
       </div>
