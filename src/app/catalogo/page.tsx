@@ -1,10 +1,7 @@
-import Image from 'next/image'
-import Link from 'next/link'
-import { ArrowLeft } from 'lucide-react'
 import { fetchPublicCategories, fetchPublicProducts } from '@/lib/api'
 import { CatalogFilters } from '@/components/ui/CatalogFilters'
 import { ProductsClient } from '@/components/ui/ProductsClient'
-import { ThemeToggle } from '@/components/ui/ThemeToggle'
+import { CatalogHeader } from '@/components/layout/CatalogHeader'
 import { Suspense } from 'react'
 
 interface PageProps {
@@ -24,19 +21,7 @@ export default async function CatalogoPage({ searchParams }: PageProps) {
 
   return (
     <div className="min-h-screen bg-[var(--background)]">
-      {/* Header */}
-      <header className="sticky top-0 z-40 bg-[#1e3a8a] dark:bg-[#0f172a] shadow-lg">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
-          <div className="flex items-center gap-3">
-            <Link href="/" className="text-white/80 hover:text-white transition-colors">
-              <ArrowLeft size={20} />
-            </Link>
-            <Image src="/LogoMayorK_t.png" alt="Mayor K" width={90} height={36} className="h-8 w-auto" />
-            <span className="hidden sm:block text-white/60 text-sm font-medium">/ Catálogo</span>
-          </div>
-          <ThemeToggle />
-        </div>
-      </header>
+      <CatalogHeader />
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Title */}
@@ -56,7 +41,7 @@ export default async function CatalogoPage({ searchParams }: PageProps) {
           </Suspense>
         </div>
 
-        {/* Products grid with client-side search */}
+        {/* Products grid */}
         <ProductsClient products={products} categoryId={categoryId} />
       </main>
     </div>
