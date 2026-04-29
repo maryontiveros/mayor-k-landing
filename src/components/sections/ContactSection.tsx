@@ -32,7 +32,7 @@ export function ContactSection() {
     <section id="contacto" className="py-20 bg-[var(--muted)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-14">
-          <span className="inline-block px-4 py-1 rounded-full text-sm font-semibold bg-[#fa6f00]/10 text-[#fa6f00] mb-4">
+          <span className="inline-block px-4 py-1 rounded-full text-sm font-semibold bg-[#FF6B1A]/10 text-[#FF6B1A] mb-4">
             Contacto
           </span>
           <h2 className="text-3xl sm:text-4xl font-bold text-[var(--foreground)] mb-4">
@@ -48,9 +48,9 @@ export function ContactSection() {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
             {contactItems.map((item) => {
               const content = (
-                <div className="flex items-start gap-4 p-5 rounded-2xl bg-[var(--card)] border border-[var(--border)] hover:border-[#fa6f00]/40 transition-colors">
-                  <div className="w-10 h-10 shrink-0 flex items-center justify-center rounded-xl bg-[#fa6f00]/10">
-                    <item.icon size={20} className="text-[#fa6f00]" />
+                <div className="flex items-start gap-4 p-5 rounded-2xl bg-[var(--card)] border border-[var(--border)] hover:border-[#FF6B1A]/40 transition-colors">
+                  <div className="w-10 h-10 shrink-0 flex items-center justify-center rounded-xl bg-[#FF6B1A]/10">
+                    <item.icon size={20} className="text-[#FF6B1A]" />
                   </div>
                   <div>
                     <p className="text-xs font-medium text-[var(--muted-foreground)] uppercase tracking-wide mb-0.5">
@@ -75,18 +75,18 @@ export function ContactSection() {
                 href="https://instagram.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 px-4 py-3 rounded-xl bg-[var(--card)] border border-[var(--border)] hover:border-[#fa6f00]/40 text-sm font-medium text-[var(--foreground)] transition-colors"
+                className="flex items-center gap-2 px-4 py-3 rounded-xl bg-[var(--card)] border border-[var(--border)] hover:border-[#FF6B1A]/40 text-sm font-medium text-[var(--foreground)] transition-colors"
               >
-                <Share2 size={18} className="text-[#fa6f00]" />
+                <Share2 size={18} className="text-[#FF6B1A]" />
                 Instagram
               </a>
               <a
                 href="https://facebook.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 px-4 py-3 rounded-xl bg-[var(--card)] border border-[var(--border)] hover:border-[#1e40af]/40 text-sm font-medium text-[var(--foreground)] transition-colors"
+                className="flex items-center gap-2 px-4 py-3 rounded-xl bg-[var(--card)] border border-[var(--border)] hover:border-[#1A6BFF]/40 text-sm font-medium text-[var(--foreground)] transition-colors"
               >
-                <Globe size={18} className="text-[#1e40af]" />
+                <Globe size={18} className="text-[#1A6BFF]" />
                 Facebook
               </a>
             </div>
@@ -95,7 +95,7 @@ export function ContactSection() {
           {/* Map placeholder */}
           <div className="rounded-2xl overflow-hidden border border-[var(--border)] h-72 lg:h-full min-h-64 bg-[var(--card)] flex items-center justify-center">
             <div className="text-center p-8">
-              <MapPin size={40} className="text-[#fa6f00] mx-auto mb-3" />
+              <MapPin size={40} className="text-[#FF6B1A] mx-auto mb-3" />
               <p className="text-sm text-[var(--muted-foreground)]">
                 Mapa de ubicación próximamente
               </p>

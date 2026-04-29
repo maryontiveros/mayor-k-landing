@@ -8,13 +8,10 @@ export function HeroSection() {
       id="inicio"
       className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden"
     >
-      {/* Background gradient — replace with <Image> once you have a real photo */}
-      <div className="absolute inset-0 z-0 bg-gradient-to-br from-[#1e3a8a] via-[#1e40af] to-[#0f172a]">
-        {/* Decorative circles for depth */}
-        <div className="absolute -top-32 -right-32 w-[600px] h-[600px] rounded-full bg-[#fa6f00]/10 blur-3xl" />
-        <div className="absolute -bottom-32 -left-32 w-[500px] h-[500px] rounded-full bg-[#1e40af]/30 blur-3xl" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-[#fa6f00]/5 blur-3xl" />
-        {/* Grid pattern overlay */}
+      <div className="absolute inset-0 z-0 bg-gradient-to-br from-[#0E1116] via-[#1e3a8a] to-[#0E1116]">
+        <div className="absolute -top-32 -right-32 w-[600px] h-[600px] rounded-full bg-[#FF6B1A]/10 blur-3xl" />
+        <div className="absolute -bottom-32 -left-32 w-[500px] h-[500px] rounded-full bg-[#1A6BFF]/20 blur-3xl" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-[#FF6B1A]/5 blur-3xl" />
         <div
           className="absolute inset-0 opacity-10"
           style={{
@@ -25,22 +22,22 @@ export function HeroSection() {
         />
       </div>
 
-      {/* Content */}
       <div className="relative z-10 text-center text-white px-4 sm:px-6 max-w-4xl mx-auto">
-        <div className="flex justify-center mb-8">
+        <div className="flex justify-center mb-6">
           <Image
-            src="/LogoMayorK_t.png"
+            src="/mayork-mark-on-dark.svg"
             alt="Mayor K"
-            width={220}
-            height={90}
-            className="h-20 w-auto drop-shadow-2xl"
+            width={160}
+            height={160}
+            className="w-36 h-36 sm:w-44 sm:h-44 drop-shadow-2xl"
             priority
           />
         </div>
 
-        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mb-4 drop-shadow-lg">
-          Mayor K <span className="text-[#fa6f00]">C.A.</span>
-        </h1>
+        <div className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight mb-6 drop-shadow-lg">
+          mayor<span className="text-[#1A6BFF]">k</span><span className="text-[#FF6B1A]">.</span>
+        </div>
+
         <p className="text-xl sm:text-2xl font-light text-white/90 mb-3">
           Distribuidora Mayorista de Ferretería
         </p>
@@ -51,7 +48,7 @@ export function HeroSection() {
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Link
             href="/catalogo"
-            className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl text-lg font-bold bg-[#fa6f00] hover:bg-[#c95900] text-white transition-all shadow-lg hover:shadow-orange-500/30 hover:scale-105"
+            className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl text-lg font-bold bg-[#FF6B1A] hover:bg-[#c95900] text-white transition-all shadow-lg hover:shadow-orange-500/30 hover:scale-105"
           >
             Ver Catálogo Completo
           </Link>
@@ -64,7 +61,6 @@ export function HeroSection() {
         </div>
       </div>
 
-      {/* Scroll indicator */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 animate-bounce">
         <a href="#nosotros" aria-label="Scroll hacia abajo">
           <ChevronDown size={32} className="text-white/60" />

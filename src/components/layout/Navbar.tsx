@@ -29,12 +29,15 @@ export function Navbar() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? 'bg-[#1e3a8a]/95 backdrop-blur-sm shadow-lg' : 'bg-transparent'
+        scrolled ? 'bg-[#0E1116]/95 backdrop-blur-sm shadow-lg' : 'bg-transparent'
       }`}
     >
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-        <Link href="#inicio" className="flex items-center gap-2 shrink-0">
-          <Image src="/LogoMayorK_t.png" alt="Mayor K" width={100} height={40} className="h-9 w-auto" />
+        <Link href="#inicio" className="flex items-center gap-3 shrink-0">
+          <Image src="/mayork-mark-on-dark.svg" alt="Mayor K" width={36} height={36} className="h-9 w-auto" />
+          <span className="font-bold text-lg text-white leading-none">
+            mayor<span className="text-[#1A6BFF]">k</span><span className="text-[#FF6B1A]">.</span>
+          </span>
         </Link>
 
         <ul className="hidden md:flex items-center gap-6">
@@ -63,7 +66,7 @@ export function Navbar() {
           </a>
           <Link
             href="/catalogo"
-            className="hidden md:inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold bg-[#fa6f00] hover:bg-[#c95900] text-white transition-colors"
+            className="hidden md:inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold bg-[#FF6B1A] hover:bg-[#c95900] text-white transition-colors"
           >
             Ver Catálogo
           </Link>
@@ -78,7 +81,7 @@ export function Navbar() {
       </nav>
 
       {open && (
-        <div className="md:hidden bg-[#1e3a8a]/98 backdrop-blur-sm border-t border-white/10">
+        <div className="md:hidden bg-[#0E1116]/98 backdrop-blur-sm border-t border-white/10">
           <ul className="px-4 py-4 flex flex-col gap-3">
             {navLinks.map((link) => (
               <li key={link.href}>
@@ -94,7 +97,7 @@ export function Navbar() {
             <li>
               <Link
                 href="/catalogo"
-                className="block mt-2 px-4 py-2 rounded-lg text-center font-semibold bg-[#fa6f00] hover:bg-[#c95900] text-white transition-colors"
+                className="block mt-2 px-4 py-2 rounded-lg text-center font-semibold bg-[#FF6B1A] hover:bg-[#c95900] text-white transition-colors"
               >
                 Ver Catálogo
               </Link>

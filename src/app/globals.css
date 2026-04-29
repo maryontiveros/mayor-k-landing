@@ -1,13 +1,14 @@
 @import "tailwindcss";
-@import "@fontsource-variable/geist";
+@import "@fontsource-variable/space-grotesk";
 
 :root {
-  --orange: #fa6f00;
-  --orange-light: #fb923c;
+  --orange: #FF6B1A;
+  --orange-light: #FF9A6B;
   --orange-dark: #c95900;
-  --blue: #1e40af;
-  --blue-light: #3b82f6;
+  --blue: #1A6BFF;
+  --blue-light: #5B90FF;
   --blue-dark: #1e3a8a;
+  --dark: #0E1116;
 
   --background: #ffffff;
   --foreground: #0f172a;
@@ -42,7 +43,8 @@
   --color-blue: var(--blue);
   --color-blue-light: var(--blue-light);
   --color-blue-dark: var(--blue-dark);
-  --font-sans: 'Geist Variable', sans-serif;
+  --color-dark: var(--dark);
+  --font-sans: 'Space Grotesk Variable', sans-serif;
 }
 
 * {
@@ -56,6 +58,6 @@ html {
 body {
   background-color: var(--background);
   color: var(--foreground);
-  font-family: 'Geist Variable', sans-serif;
+  font-family: 'Space Grotesk Variable', sans-serif;
   transition: background-color 0.3s, color 0.3s;
 }

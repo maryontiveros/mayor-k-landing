@@ -3,28 +3,28 @@ import { TrendingDown, Package, Headphones, Truck } from 'lucide-react'
 const features = [
   {
     icon: TrendingDown,
-    color: '#fa6f00',
+    color: '#FF6B1A',
     title: 'Precios Mayoristas',
     description:
       'Ofrecemos los mejores precios del mercado para compras al por mayor. Ideal para constructoras, ferreterías y contratistas.',
   },
   {
     icon: Package,
-    color: '#1e40af',
+    color: '#1A6BFF',
     title: 'Amplio Catálogo',
     description:
       'Contamos con una extensa variedad de productos de ferretería en todas las categorías para cubrir cualquier necesidad.',
   },
   {
     icon: Headphones,
-    color: '#fa6f00',
+    color: '#FF6B1A',
     title: 'Atención Personalizada',
     description:
       'Nuestro equipo de expertos te asesora para encontrar el producto correcto al mejor precio para tu proyecto.',
   },
   {
     icon: Truck,
-    color: '#1e40af',
+    color: '#1A6BFF',
     title: 'Distribución Directa',
     description:
       'Distribución directa desde nuestros almacenes. Pedidos al mayor con entregas coordinadas según tu necesidad.',
@@ -36,7 +36,7 @@ export function WhyUsSection() {
     <section id="ventajas" className="py-20 bg-[var(--background)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-14">
-          <span className="inline-block px-4 py-1 rounded-full text-sm font-semibold bg-[#1e40af]/10 text-[#1e40af] dark:bg-[#3b82f6]/15 dark:text-[#3b82f6] mb-4">
+          <span className="inline-block px-4 py-1 rounded-full text-sm font-semibold bg-[#1A6BFF]/10 text-[#1A6BFF] dark:bg-[#5B90FF]/15 dark:text-[#5B90FF] mb-4">
             Nuestras Ventajas
           </span>
           <h2 className="text-3xl sm:text-4xl font-bold text-[var(--foreground)] mb-4">

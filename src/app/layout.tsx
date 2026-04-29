@@ -3,10 +3,23 @@ import './globals.css'
 import { ThemeProvider } from '@/components/ui/ThemeProvider'
 
 export const metadata: Metadata = {
-  title: 'Mayor K C.A. | Ferretería al Mayor',
+  title: 'mayork. | Ferretería al Mayor',
   description:
     'Distribuidora y mayorista de ferretería en Venezuela. Amplio catálogo de productos de ferretería a precios mayoristas.',
   keywords: 'ferretería, mayorista, herramientas, Venezuela, Mayor K',
+  icons: {
+    icon: [
+      { url: '/favicons/favicon.svg', type: 'image/svg+xml' },
+      { url: '/favicons/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/favicons/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+    ],
+    apple: [
+      { url: '/favicons/apple-touch-icon.png' },
+    ],
+    other: [
+      { rel: 'mask-icon', url: '/favicons/safari-pinned-tab.svg' },
+    ],
+  },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

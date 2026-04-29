@@ -7,7 +7,7 @@ function CategoryCard({ category }: { category: PublicCategory }) {
   return (
     <Link
       href={`/catalogo?categoria=${category.id}`}
-      className="group flex flex-col rounded-2xl bg-[var(--card)] border border-[var(--border)] hover:border-[#fa6f00]/50 hover:shadow-lg transition-all duration-200 w-full overflow-hidden"
+      className="group flex flex-col rounded-2xl bg-[var(--card)] border border-[var(--border)] hover:border-[#FF6B1A]/50 hover:shadow-lg transition-all duration-200 w-full overflow-hidden"
     >
       <div className="relative aspect-[4/3] bg-[var(--muted)] flex items-center justify-center">
         {category.imageUrl ? (
@@ -19,11 +19,11 @@ function CategoryCard({ category }: { category: PublicCategory }) {
             sizes="(max-width: 640px) 50vw, 176px"
           />
         ) : (
-          <Wrench size={32} className="text-[#fa6f00]" />
+          <Wrench size={32} className="text-[#FF6B1A]" />
         )}
       </div>
       <div className="p-3 text-center">
-        <p className="font-semibold text-[var(--foreground)] group-hover:text-[#fa6f00] transition-colors text-sm">
+        <p className="font-semibold text-[var(--foreground)] group-hover:text-[#FF6B1A] transition-colors text-sm">
           {category.name}
         </p>
         <p className="text-xs text-[var(--muted-foreground)] mt-0.5">
@@ -41,7 +41,7 @@ export async function CategoriesSection() {
     <section id="productos" className="py-20 bg-[var(--muted)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-14">
-          <span className="inline-block px-4 py-1 rounded-full text-sm font-semibold bg-[#fa6f00]/10 text-[#fa6f00] mb-4">
+          <span className="inline-block px-4 py-1 rounded-full text-sm font-semibold bg-[#FF6B1A]/10 text-[#FF6B1A] mb-4">
             Nuestros Productos
           </span>
           <h2 className="text-3xl sm:text-4xl font-bold text-[var(--foreground)] mb-4">
@@ -71,7 +71,7 @@ export async function CategoriesSection() {
         <div className="text-center mt-10">
           <Link
             href="/catalogo"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold bg-[#fa6f00] hover:bg-[#c95900] text-white transition-colors shadow-md"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold bg-[#FF6B1A] hover:bg-[#D94F00] text-white transition-colors shadow-md"
           >
             Ver todos los productos <ArrowRight size={18} />
           </Link>

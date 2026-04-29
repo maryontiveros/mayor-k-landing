@@ -5,7 +5,7 @@ export function AboutSection() {
     <section id="nosotros" className="py-20 bg-[var(--background)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-14">
-          <span className="inline-block px-4 py-1 rounded-full text-sm font-semibold bg-[#1e40af]/10 text-[#1e40af] dark:bg-[#3b82f6]/15 dark:text-[#3b82f6] mb-4">
+          <span className="inline-block px-4 py-1 rounded-full text-sm font-semibold bg-[#1A6BFF]/10 text-[#1A6BFF] dark:bg-[#5B90FF]/15 dark:text-[#5B90FF] mb-4">
             Sobre Nosotros
           </span>
           <h2 className="text-3xl sm:text-4xl font-bold text-[var(--foreground)] mb-4">
@@ -19,8 +19,8 @@ export function AboutSection() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className="flex flex-col items-center text-center p-6 rounded-2xl bg-[var(--muted)] border border-[var(--border)]">
-            <div className="w-14 h-14 flex items-center justify-center rounded-full bg-[#fa6f00]/10 mb-4">
-              <Award size={28} className="text-[#fa6f00]" />
+            <div className="w-14 h-14 flex items-center justify-center rounded-full bg-[#FF6B1A]/10 mb-4">
+              <Award size={28} className="text-[#FF6B1A]" />
             </div>
             <h3 className="text-xl font-bold text-[var(--foreground)] mb-2">Experiencia</h3>
             <p className="text-[var(--muted-foreground)] text-sm leading-relaxed">
@@ -29,8 +29,8 @@ export function AboutSection() {
           </div>
 
           <div className="flex flex-col items-center text-center p-6 rounded-2xl bg-[var(--muted)] border border-[var(--border)]">
-            <div className="w-14 h-14 flex items-center justify-center rounded-full bg-[#1e40af]/10 mb-4">
-              <ShieldCheck size={28} className="text-[#1e40af]" />
+            <div className="w-14 h-14 flex items-center justify-center rounded-full bg-[#1A6BFF]/10 mb-4">
+              <ShieldCheck size={28} className="text-[#1A6BFF]" />
             </div>
             <h3 className="text-xl font-bold text-[var(--foreground)] mb-2">Calidad garantizada</h3>
             <p className="text-[var(--muted-foreground)] text-sm leading-relaxed">
@@ -39,8 +39,8 @@ export function AboutSection() {
           </div>
 
           <div className="flex flex-col items-center text-center p-6 rounded-2xl bg-[var(--muted)] border border-[var(--border)]">
-            <div className="w-14 h-14 flex items-center justify-center rounded-full bg-[#fa6f00]/10 mb-4">
-              <Users size={28} className="text-[#fa6f00]" />
+            <div className="w-14 h-14 flex items-center justify-center rounded-full bg-[#FF6B1A]/10 mb-4">
+              <Users size={28} className="text-[#FF6B1A]" />
             </div>
             <h3 className="text-xl font-bold text-[var(--foreground)] mb-2">Atención personalizada</h3>
             <p className="text-[var(--muted-foreground)] text-sm leading-relaxed">

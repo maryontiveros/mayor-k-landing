@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 356 92" width="356" height="92">
+  <defs></defs>
+  <g transform="translate(0 0)"><rect x="0" y="0" width="28" height="28" rx="3" ry="3" fill="#0E1116"></rect><rect x="64" y="0" width="28" height="28" rx="3" ry="3" fill="#0E1116"></rect><rect x="0" y="32" width="28" height="28" rx="3" ry="3" fill="#0E1116"></rect><rect x="32" y="32" width="28" height="28" rx="3" ry="3" fill="#FF6B1A"></rect><rect x="0" y="64" width="28" height="28" rx="3" ry="3" fill="#0E1116"></rect><rect x="64" y="64" width="28" height="28" rx="3" ry="3" fill="#1A6BFF"></rect></g>
+  <g transform="translate(116 4)">
+    <text class="mk-word" x="0" y="69" font-size="80" fill="#0E1116">mayor<tspan fill="#1A6BFF">k</tspan><tspan fill="#FF6B1A">.</tspan></text>
+  </g>
+</svg>
