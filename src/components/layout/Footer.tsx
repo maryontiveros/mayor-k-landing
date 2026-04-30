@@ -32,9 +32,8 @@ export function Footer() {
           <div>
             <h3 className="font-semibold mb-3 text-white/90">Contacto</h3>
             <ul className="space-y-2 text-sm text-white/70">
-              <li>📞 +58 (000) 000-0000</li>
-              <li>📍 Venezuela</li>
-              <li>✉️ info@mayork.com</li>
+              <li>📞 +58 412-5176074</li>
+              <li>✉️ mayork.ventas@gmail.com</li>
             </ul>
           </div>
         </div>
