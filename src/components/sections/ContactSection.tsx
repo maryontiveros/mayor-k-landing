@@ -1,4 +1,4 @@
-import { Phone, Mail, MessageCircle, Share2, Globe } from 'lucide-react'
+import { Phone, Mail, MessageCircle, Share2 } from 'lucide-react'
 
 const contactItems = [
   {
@@ -59,22 +59,13 @@ export function ContactSection() {
           {/* Social media */}
           <div className="flex gap-3 mt-5">
             <a
-              href="https://instagram.com"
+              href="https://www.instagram.com/mayorkca?igsh=MXBrc3lqNHBwcDA1bA=="
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 px-4 py-3 rounded-xl bg-[var(--card)] border border-[var(--border)] hover:border-[#FF6B1A]/40 text-sm font-medium text-[var(--foreground)] transition-colors"
             >
               <Share2 size={18} className="text-[#FF6B1A]" />
               Instagram
-            </a>
-            <a
-              href="https://facebook.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 px-4 py-3 rounded-xl bg-[var(--card)] border border-[var(--border)] hover:border-[#1A6BFF]/40 text-sm font-medium text-[var(--foreground)] transition-colors"
-            >
-              <Globe size={18} className="text-[#1A6BFF]" />
-              Facebook
             </a>
           </div>
         </div>
