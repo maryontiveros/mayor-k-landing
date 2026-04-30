@@ -37,7 +37,7 @@ export function ContactSection() {
           </p>
         </div>
 
-        <div className="max-w-2xl mx-auto">
+        <div className="max-w-3xl mx-auto">
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
             {contactItems.map((item) => (
               <a key={item.label} href={item.href!} target="_blank" rel="noopener noreferrer">
@@ -49,7 +49,7 @@ export function ContactSection() {
                     <p className="text-xs font-medium text-[var(--muted-foreground)] uppercase tracking-wide mb-0.5">
                       {item.label}
                     </p>
-                    <p className="text-sm font-semibold text-[var(--foreground)]">{item.value}</p>
+                    <p className="text-sm font-semibold text-[var(--foreground)] whitespace-nowrap">{item.value}</p>
                   </div>
                 </div>
               </a>
