@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "@fontsource-variable/space-grotesk";
+@import "@fontsource/barlow-condensed/600.css";
 
 :root {
   --orange: #FF6B1A;
@@ -45,6 +46,7 @@
   --color-blue-dark: var(--blue-dark);
   --color-dark: var(--dark);
   --font-sans: 'Space Grotesk Variable', sans-serif;
+  --font-display: 'Barlow Condensed', sans-serif;
 }
 
 * {

@@ -21,7 +21,7 @@ export function ProductCard({ product, onClick }: { product: PublicProduct; onCl
         )}
       </div>
       <div className="p-2.5 flex flex-col gap-0.5">
-        <h3 className="text-xs font-semibold text-[var(--foreground)] leading-snug line-clamp-2">
+        <h3 className="text-sm font-semibold text-[var(--foreground)] leading-snug line-clamp-2 font-display tracking-wide">
           {product.name}
         </h3>
         <p className="text-xs font-bold text-[#fa6f00]">
