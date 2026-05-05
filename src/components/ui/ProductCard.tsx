@@ -21,12 +21,10 @@ export function ProductCard({ product, onClick }: { product: PublicProduct; onCl
         )}
       </div>
       <div className="p-2.5 flex flex-col gap-0.5">
-        <div className="flex items-baseline gap-1.5 min-w-0">
-          <span className="text-xs text-[var(--muted-foreground)] font-mono shrink-0">{product.code}</span>
-          <h3 className="text-sm font-semibold text-[var(--foreground)] leading-snug line-clamp-2 font-display tracking-wide min-w-0">
-            {product.name}
-          </h3>
-        </div>
+        <span className="text-xs text-[var(--muted-foreground)] font-mono">{product.code}</span>
+        <h3 className="text-sm font-semibold text-[var(--foreground)] leading-snug line-clamp-2 font-display tracking-wide">
+          {product.name}
+        </h3>
         <p className="text-xs font-bold text-[#fa6f00]">
           ${product.priceWithProfit.toFixed(2)}
         </p>

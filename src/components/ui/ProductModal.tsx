@@ -65,10 +65,10 @@ export function ProductModal({ product, onClose }: Props) {
               {product.name}
             </h2>
             <p className="text-2xl font-bold text-[#fa6f00]">
-              ${product.price.toFixed(2)}
+              ${product.priceWithProfit.toFixed(2)}
             </p>
             {product.description && (
-              <p className="text-sm text-[var(--muted-foreground)] leading-relaxed">
+              <p className="text-sm text-[var(--muted-foreground)] leading-relaxed whitespace-pre-line">
                 {product.description}
               </p>
             )}

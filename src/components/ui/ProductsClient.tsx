@@ -17,9 +17,10 @@ export function ProductsClient({ products, categoryId }: Props) {
   const [selected, setSelected] = useState<PublicProduct | null>(null)
 
   const filtered = query.trim()
-    ? products.filter((p) =>
-        p.name.toLowerCase().includes(query.toLowerCase().trim())
-      )
+    ? products.filter((p) => {
+        const q = query.toLowerCase().trim()
+        return p.name.toLowerCase().includes(q) || p.code.toLowerCase().includes(q)
+      })
     : products
 
   return (
@@ -32,7 +33,7 @@ export function ProductsClient({ products, categoryId }: Props) {
         />
         <input
           type="search"
-          placeholder="Buscar por nombre..."
+          placeholder="Buscar por nombre o código..."
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           className="w-full pl-9 pr-4 py-2 text-sm rounded-xl border border-[var(--border)] bg-[var(--card)] text-[var(--foreground)] placeholder:text-[var(--muted-foreground)] focus:outline-none focus:border-[#FF6B1A]/60 focus:ring-1 focus:ring-[#FF6B1A]/20 transition"
