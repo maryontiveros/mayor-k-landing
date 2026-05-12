@@ -3,7 +3,7 @@ import './globals.css'
 import { ThemeProvider } from '@/components/ui/ThemeProvider'
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://mayork.net'),
+  metadataBase: new URL('https://www.mayork.net'),
   title: 'mayork. | Ferretería al Mayor',
   description:
     'Distribuidora y mayorista de ferretería en Venezuela. Amplio catálogo de productos de ferretería a precios mayoristas.',
