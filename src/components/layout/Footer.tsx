@@ -26,6 +26,7 @@ export function Footer() {
               <li><a href="#ventajas" className="hover:text-white transition-colors">¿Por qué nosotros?</a></li>
               <li><a href="#contacto" className="hover:text-white transition-colors">Contacto</a></li>
               <li><Link href="/catalogo" className="hover:text-white transition-colors">Catálogo de Productos</Link></li>
+              <li><Link href="/privacidad" className="hover:text-white transition-colors">Política de Privacidad</Link></li>
             </ul>
           </div>
 
