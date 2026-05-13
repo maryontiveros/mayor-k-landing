@@ -4,7 +4,11 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { ThemeToggle } from '@/components/ui/ThemeToggle'
 
-export function CatalogHeader() {
+interface CatalogHeaderProps {
+  title?: string
+}
+
+export function CatalogHeader({ title = 'Catálogo' }: CatalogHeaderProps) {
   return (
     <header className="sticky top-0 z-40 bg-[#0E1116]/95 backdrop-blur-sm border-b border-white/10 shadow-md">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
@@ -36,7 +40,7 @@ export function CatalogHeader() {
 
           {/* Breadcrumb */}
           <span className="text-white/20 select-none text-lg leading-none">·</span>
-          <span className="text-white/60 text-sm font-medium truncate">Catálogo</span>
+          <span className="text-white/60 text-sm font-medium truncate">{title}</span>
         </div>
 
         <ThemeToggle />

@@ -1,6 +1,5 @@
-import { Navbar } from '@/components/layout/Navbar'
+import { CatalogHeader } from '@/components/layout/CatalogHeader'
 import { Footer } from '@/components/layout/Footer'
-import Link from 'next/link'
 
 export const metadata = {
   title: 'Política de Privacidad | mayork.',
@@ -10,16 +9,9 @@ export const metadata = {
 export default function PrivacidadPage() {
   return (
     <>
-      <Navbar />
+      <CatalogHeader title="Política de Privacidad" />
       <main className="min-h-screen bg-[var(--background)]">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-          <Link
-            href="/"
-            className="inline-flex items-center gap-2 text-sm text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition-colors mb-8"
-          >
-            ← Volver al inicio
-          </Link>
-
           <h1 className="text-3xl sm:text-4xl font-bold text-[var(--foreground)] mb-2">
             Política de Privacidad
           </h1>
