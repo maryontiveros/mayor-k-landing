@@ -6,7 +6,14 @@ export function ProductCard({ product, onClick }: { product: PublicProduct; onCl
   const firstImage = product.images[0]
 
   return (
-    <div onClick={onClick} className={`group flex flex-col rounded-2xl bg-[var(--card)] border border-[var(--border)] overflow-hidden hover:shadow-md hover:border-[#fa6f00]/40 transition-all duration-200 ${onClick ? 'cursor-pointer' : ''}`}>
+    <div onClick={onClick} className={`group relative flex flex-col rounded-2xl bg-[var(--card)] border border-[var(--border)] overflow-hidden hover:shadow-md hover:border-[#fa6f00]/40 transition-all duration-200 ${onClick ? 'cursor-pointer' : ''}`}>
+      {product.onSale && (
+        <div className="absolute top-0 left-0 z-10 overflow-hidden w-24 h-24 pointer-events-none">
+          <div className="absolute top-4 -left-8 w-32 text-center bg-red-600 text-white text-[10px] font-bold tracking-wider py-1 shadow-md -rotate-45">
+            OFERTA
+          </div>
+        </div>
+      )}
       <div className="relative aspect-[4/3] bg-[var(--muted)] flex items-center justify-center overflow-hidden">
         {firstImage ? (
           <Image
