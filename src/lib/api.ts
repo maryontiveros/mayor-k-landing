@@ -18,11 +18,69 @@ export interface PublicProduct {
   description: string
   price: number
   priceWithProfit: number
+  /** Disponibilidad orientativa para validar cantidades en UI; se revalida en el checkout. */
+  stock: number
   categoryId: number
   category: { id: number; name: string }
   images: ProductImage[]
   position: number
   onSale: boolean
+}
+
+export interface PaymentMethod {
+  id: string
+  name: string
+  type: string
+  instructions: string
+  details: Record<string, unknown> | null
+}
+
+export interface ShippingOption {
+  id: string
+  name: string
+  cost: number
+  description: string
+  requiresAddress: boolean
+}
+
+export interface Customer {
+  id: string
+  name: string
+  email: string
+  phone: string
+}
+
+export interface OrderAddress {
+  fullName?: string
+  phone?: string
+  line1?: string
+  city?: string
+  state?: string
+  reference?: string
+}
+
+export interface OrderItem {
+  id: string
+  productCode: string
+  nameSnapshot: string
+  unitPriceSnapshot: number
+  quantity: number
+}
+
+export interface Order {
+  id: string
+  status: 'pending' | 'confirmed' | 'paid' | 'shipped' | 'cancelled'
+  subtotal: number
+  shippingCost: number
+  total: number
+  paymentReference: string
+  shippingAddress: OrderAddress | null
+  notes: string
+  casheaOrderId: string | null
+  createdAt: string
+  items: OrderItem[]
+  paymentMethod: { id: string; name: string; type: string; instructions: string } | null
+  shippingOption: { id: string; name: string; cost: number } | null
 }
 
 export async function fetchPublicCategories(): Promise<PublicCategory[]> {

@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import './globals.css'
 import { ThemeProvider } from '@/components/ui/ThemeProvider'
+import { StoreOverlays } from '@/components/StoreOverlays'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.mayork.net'),
@@ -27,7 +28,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="es" suppressHydrationWarning>
       <body className="min-h-full flex flex-col antialiased">
-        <ThemeProvider>{children}</ThemeProvider>
+        <ThemeProvider>
+          {children}
+          <StoreOverlays />
+        </ThemeProvider>
       </body>
     </html>
   )

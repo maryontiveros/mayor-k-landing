@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import { Package } from 'lucide-react'
 import { PublicProduct } from '@/lib/api'
+import { AddToCartButton } from './AddToCartButton'
 
 export function ProductCard({ product, onClick }: { product: PublicProduct; onClick?: () => void }) {
   const firstImage = product.images[0]
@@ -35,6 +36,7 @@ export function ProductCard({ product, onClick }: { product: PublicProduct; onCl
         <p className="text-xs font-bold text-[#fa6f00]">
           ${product.priceWithProfit.toFixed(2)}
         </p>
+        <AddToCartButton product={product} />
       </div>
     </div>
   )

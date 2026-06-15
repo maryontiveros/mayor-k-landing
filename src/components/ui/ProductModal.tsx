@@ -2,8 +2,9 @@
 
 import { useEffect, useState } from 'react'
 import Image from 'next/image'
-import { X, Package } from 'lucide-react'
+import { X, Package, Minus, Plus } from 'lucide-react'
 import { PublicProduct } from '@/lib/api'
+import { AddToCartButton } from './AddToCartButton'
 
 interface Props {
   product: PublicProduct
@@ -12,6 +13,7 @@ interface Props {
 
 export function ProductModal({ product, onClose }: Props) {
   const [activeImage, setActiveImage] = useState(product.images[0] ?? null)
+  const [quantity, setQuantity] = useState(1)
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose() }
@@ -72,7 +74,39 @@ export function ProductModal({ product, onClose }: Props) {
                 {product.description}
               </p>
             )}
-            <p className="text-xs text-[var(--muted-foreground)] mt-auto pt-3 border-t border-[var(--border)]">
+
+            {/* Cantidad + agregar al carrito */}
+            <div className="mt-auto pt-4 flex flex-col gap-3">
+              <div className="flex items-center gap-3">
+                <span className="text-sm text-[var(--muted-foreground)]">Cantidad</span>
+                <div className="flex items-center gap-1.5">
+                  <button
+                    onClick={() => setQuantity((q) => Math.max(1, q - 1))}
+                    className="p-1.5 rounded-md border border-[var(--border)] hover:bg-[var(--muted)] transition-colors"
+                    aria-label="Restar"
+                  >
+                    <Minus size={14} className="text-[var(--foreground)]" />
+                  </button>
+                  <span className="text-sm font-semibold text-[var(--foreground)] w-8 text-center">
+                    {quantity}
+                  </span>
+                  <button
+                    onClick={() => setQuantity((q) => Math.min(product.stock, q + 1))}
+                    disabled={quantity >= product.stock}
+                    className="p-1.5 rounded-md border border-[var(--border)] hover:bg-[var(--muted)] disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+                    aria-label="Sumar"
+                  >
+                    <Plus size={14} className="text-[var(--foreground)]" />
+                  </button>
+                </div>
+                <span className="text-xs text-[var(--muted-foreground)]">
+                  {product.stock > 0 ? `${product.stock} disponible(s)` : 'Sin stock'}
+                </span>
+              </div>
+              <AddToCartButton product={product} quantity={quantity} variant="full" openCartOnAdd />
+            </div>
+
+            <p className="text-xs text-[var(--muted-foreground)] pt-3 border-t border-[var(--border)]">
               Código: <span className="font-mono">{product.code}</span>
             </p>
           </div>

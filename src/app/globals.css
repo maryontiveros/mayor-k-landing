@@ -63,3 +63,26 @@ body {
   font-family: 'Space Grotesk Variable', sans-serif;
   transition: background-color 0.3s, color 0.3s;
 }
+
+/* Comprobante imprimible: al imprimir, solo se muestra #receipt como factura. */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  #receipt,
+  #receipt * {
+    visibility: visible;
+  }
+  #receipt {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 24px;
+    color: #111827;
+    background: #ffffff;
+  }
+  .no-print {
+    display: none !important;
+  }
+}
