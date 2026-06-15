@@ -14,6 +14,13 @@ export function ProductCard({ product, onClick }: { product: PublicProduct; onCl
           </div>
         </div>
       )}
+      {product.onPreSale && (
+        <div className="absolute top-0 right-0 z-10 overflow-hidden w-24 h-24 pointer-events-none">
+          <div className="absolute top-4 -right-8 w-32 text-center bg-amber-400 text-amber-950 text-[10px] font-bold tracking-wider py-1 shadow-md rotate-45">
+            PRE-VENTA
+          </div>
+        </div>
+      )}
       <div className="relative aspect-[4/3] bg-[var(--muted)] flex items-center justify-center overflow-hidden">
         {firstImage ? (
           <Image

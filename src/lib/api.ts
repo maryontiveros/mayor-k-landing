@@ -23,6 +23,7 @@ export interface PublicProduct {
   images: ProductImage[]
   position: number
   onSale: boolean
+  onPreSale: boolean
 }
 
 export async function fetchPublicCategories(): Promise<PublicCategory[]> {
