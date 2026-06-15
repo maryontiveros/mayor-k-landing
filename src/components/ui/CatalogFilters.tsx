@@ -1,7 +1,7 @@
 'use client'
 
 import { useRouter, useSearchParams } from 'next/navigation'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { Loader2 } from 'lucide-react'
 import { PublicCategory } from '@/lib/api'
 
@@ -11,9 +11,11 @@ export function CatalogFilters({ categories }: { categories: PublicCategory[] })
   const active = params.get('categoria')
   const [pendingId, setPendingId] = useState<string | null>(null)
 
-  useEffect(() => {
+  const [prevActive, setPrevActive] = useState(active)
+  if (active !== prevActive) {
+    setPrevActive(active)
     setPendingId(null)
-  }, [active])
+  }
 
   function select(id: string | null) {
     if (id === active) return
