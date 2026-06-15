@@ -16,6 +16,7 @@ export function CatalogFilters({ categories }: { categories: PublicCategory[] })
   }, [active])
 
   function select(id: string | null) {
+    if (id === active) return
     const key = id ?? 'all'
     if (pendingId === key) return
     setPendingId(key)
@@ -27,28 +28,36 @@ export function CatalogFilters({ categories }: { categories: PublicCategory[] })
       <button
         onClick={() => select(null)}
         disabled={!!pendingId}
-        className={`inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-medium transition-colors border disabled:opacity-60 ${
+        className={`relative inline-flex items-center justify-center px-4 py-2 rounded-full text-sm font-medium transition-colors border disabled:opacity-60 ${
           !active
             ? 'bg-[#fa6f00] border-[#fa6f00] text-white'
             : 'border-[var(--border)] text-[var(--muted-foreground)] hover:border-[#fa6f00]/50 hover:text-[var(--foreground)]'
         }`}
       >
-        {pendingId === 'all' && <Loader2 size={13} className="animate-spin" />}
-        Todos
+        {pendingId === 'all' && (
+          <span className="absolute inset-0 flex items-center justify-center">
+            <Loader2 size={13} className="animate-spin" />
+          </span>
+        )}
+        <span className={pendingId === 'all' ? 'invisible' : undefined}>Todos</span>
       </button>
       {categories.map((cat) => (
         <button
           key={cat.id}
           onClick={() => select(String(cat.id))}
           disabled={!!pendingId}
-          className={`inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-medium transition-colors border disabled:opacity-60 ${
+          className={`relative inline-flex items-center justify-center px-4 py-2 rounded-full text-sm font-medium transition-colors border disabled:opacity-60 ${
             active === String(cat.id)
               ? 'bg-[#fa6f00] border-[#fa6f00] text-white'
               : 'border-[var(--border)] text-[var(--muted-foreground)] hover:border-[#fa6f00]/50 hover:text-[var(--foreground)]'
           }`}
         >
-          {pendingId === String(cat.id) && <Loader2 size={13} className="animate-spin" />}
-          {cat.name}
+          {pendingId === String(cat.id) && (
+            <span className="absolute inset-0 flex items-center justify-center">
+              <Loader2 size={13} className="animate-spin" />
+            </span>
+          )}
+          <span className={pendingId === String(cat.id) ? 'invisible' : undefined}>{cat.name}</span>
         </button>
       ))}
     </div>
