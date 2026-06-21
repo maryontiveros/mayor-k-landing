@@ -42,6 +42,7 @@ export function CasheaCheckoutButton({ orderId, items, shippingCost, cedula }: P
         const payload = {
           identificationNumber: cedula,
           externalClientId: EXTERNAL_CLIENT_ID,
+          invoiceId: orderId,
           deliveryMethod: 'IN_STORE',
           merchantName: 'Mayor K',
           redirectUrl: `${window.location.origin}/checkout/cashea-return/${orderId}`,
