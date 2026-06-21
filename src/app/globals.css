@@ -66,15 +66,20 @@ body {
 
 /* Comprobante imprimible: al imprimir, solo se muestra #receipt como factura. */
 @media print {
+  body {
+    overflow: visible !important;
+  }
   body * {
     visibility: hidden;
   }
   #receipt,
   #receipt * {
     visibility: visible;
+    overflow: visible !important;
+    max-height: none !important;
   }
   #receipt {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
