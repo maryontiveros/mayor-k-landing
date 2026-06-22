@@ -5,7 +5,7 @@ import { X, Loader2, Eye, EyeOff } from 'lucide-react'
 import { useUI } from '@/store/ui'
 import { useCustomerAuth } from '@/store/customerAuth'
 import { toast } from '@/store/toast'
-import { loginCustomer, registerCustomer, ApiError } from '@/lib/apiClient'
+import { loginCustomer, registerCustomer, forgotCustomerPassword, ApiError } from '@/lib/apiClient'
 
 export function AuthModal() {
   const { authOpen, authMode, setAuthMode, closeAuth, onAuthSuccess } = useUI()
@@ -17,6 +17,7 @@ export function AuthModal() {
   const [password, setPassword] = useState('')
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
+  const [forgotSent, setForgotSent] = useState(false)
 
   useEffect(() => {
     if (!authOpen) return
@@ -40,16 +41,35 @@ export function AuthModal() {
       setPassword('')
       setError(null)
       setLoading(false)
+      setForgotSent(false)
     }
   }, [authOpen])
 
   if (!authOpen) return null
 
   const isRegister = authMode === 'register'
+  const isForgot = authMode === 'forgot'
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
     setError(null)
+
+    if (isForgot) {
+      if (!email.trim()) {
+        setError('Ingresa tu correo electrónico.')
+        return
+      }
+      setLoading(true)
+      try {
+        await forgotCustomerPassword(email.trim())
+        setForgotSent(true)
+      } catch (err) {
+        setError(err instanceof ApiError ? err.message : 'No se pudo completar la solicitud.')
+      } finally {
+        setLoading(false)
+      }
+      return
+    }
 
     if (!email.trim() || !password) {
       setError('Completa todos los campos.')
@@ -102,75 +122,182 @@ export function AuthModal() {
         </button>
 
         <div className="p-6 sm:p-8">
-          <h2 className="text-xl font-bold text-[var(--foreground)] font-display tracking-wide">
-            {isRegister ? 'Crear cuenta' : 'Iniciar sesión'}
-          </h2>
-          <p className="text-sm text-[var(--muted-foreground)] mt-1">
-            {isRegister
-              ? 'Regístrate para completar tu compra.'
-              : 'Ingresa para finalizar tu pedido.'}
-          </p>
-
-          <form onSubmit={handleSubmit} className="mt-6 flex flex-col gap-3">
-            {isRegister && (
-              <Field
-                label="Nombre completo"
-                value={name}
-                onChange={setName}
-                placeholder="Tu nombre"
-                autoFocus
+          {isForgot ? (
+            forgotSent ? (
+              <ForgotSuccess onBack={() => { setForgotSent(false); setAuthMode('login') }} />
+            ) : (
+              <ForgotForm
+                email={email}
+                setEmail={setEmail}
+                loading={loading}
+                error={error}
+                onSubmit={handleSubmit}
+                onBack={() => { setError(null); setAuthMode('login') }}
               />
-            )}
-            <Field
-              label="Correo electrónico"
-              type="email"
-              value={email}
-              onChange={setEmail}
-              placeholder="tu@correo.com"
-              autoFocus={!isRegister}
-            />
-            {isRegister && (
-              <Field
-                label="Teléfono (opcional)"
-                value={phone}
-                onChange={setPhone}
-                placeholder="04140000000"
-              />
-            )}
-            <Field
-              label="Contraseña"
-              type="password"
-              value={password}
-              onChange={setPassword}
-              placeholder={isRegister ? 'Mínimo 8 caracteres' : '••••••••'}
-            />
+            )
+          ) : (
+            <>
+              <h2 className="text-xl font-bold text-[var(--foreground)] font-display tracking-wide">
+                {isRegister ? 'Crear cuenta' : 'Iniciar sesión'}
+              </h2>
+              <p className="text-sm text-[var(--muted-foreground)] mt-1">
+                {isRegister
+                  ? 'Regístrate para completar tu compra.'
+                  : 'Ingresa para finalizar tu pedido.'}
+              </p>
 
-            {error && <p className="text-sm text-red-500">{error}</p>}
+              <form onSubmit={handleSubmit} className="mt-6 flex flex-col gap-3">
+                {isRegister && (
+                  <Field
+                    label="Nombre completo"
+                    value={name}
+                    onChange={setName}
+                    placeholder="Tu nombre"
+                    autoFocus
+                  />
+                )}
+                <Field
+                  label="Correo electrónico"
+                  type="email"
+                  value={email}
+                  onChange={setEmail}
+                  placeholder="tu@correo.com"
+                  autoFocus={!isRegister}
+                />
+                {isRegister && (
+                  <Field
+                    label="Teléfono (opcional)"
+                    value={phone}
+                    onChange={setPhone}
+                    placeholder="04140000000"
+                  />
+                )}
+                <Field
+                  label="Contraseña"
+                  type="password"
+                  value={password}
+                  onChange={setPassword}
+                  placeholder={isRegister ? 'Mínimo 8 caracteres' : '••••••••'}
+                />
 
-            <button
-              type="submit"
-              disabled={loading}
-              className="mt-2 flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg text-sm font-semibold bg-[#FF6B1A] hover:bg-[#c95900] disabled:opacity-60 text-white transition-colors"
-            >
-              {loading && <Loader2 size={16} className="animate-spin" />}
-              {isRegister ? 'Crear cuenta' : 'Iniciar sesión'}
-            </button>
-          </form>
+                {!isRegister && (
+                  <div className="flex justify-end -mt-1">
+                    <button
+                      type="button"
+                      onClick={() => { setError(null); setAuthMode('forgot') }}
+                      className="text-xs text-[var(--muted-foreground)] hover:text-[#FF6B1A] transition-colors"
+                    >
+                      ¿Olvidaste tu contraseña?
+                    </button>
+                  </div>
+                )}
 
-          <p className="text-sm text-[var(--muted-foreground)] mt-5 text-center">
-            {isRegister ? '¿Ya tienes cuenta?' : '¿No tienes cuenta?'}{' '}
-            <button
-              onClick={() => {
-                setError(null)
-                setAuthMode(isRegister ? 'login' : 'register')
-              }}
-              className="font-semibold text-[#FF6B1A] hover:underline"
-            >
-              {isRegister ? 'Inicia sesión' : 'Crea una'}
-            </button>
-          </p>
+                {error && <p className="text-sm text-red-500">{error}</p>}
+
+                <button
+                  type="submit"
+                  disabled={loading}
+                  className="mt-2 flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg text-sm font-semibold bg-[#FF6B1A] hover:bg-[#c95900] disabled:opacity-60 text-white transition-colors"
+                >
+                  {loading && <Loader2 size={16} className="animate-spin" />}
+                  {isRegister ? 'Crear cuenta' : 'Iniciar sesión'}
+                </button>
+              </form>
+
+              <p className="text-sm text-[var(--muted-foreground)] mt-5 text-center">
+                {isRegister ? '¿Ya tienes cuenta?' : '¿No tienes cuenta?'}{' '}
+                <button
+                  onClick={() => {
+                    setError(null)
+                    setAuthMode(isRegister ? 'login' : 'register')
+                  }}
+                  className="font-semibold text-[#FF6B1A] hover:underline"
+                >
+                  {isRegister ? 'Inicia sesión' : 'Crea una'}
+                </button>
+              </p>
+            </>
+          )}
         </div>
       </div>
+    </div>
+  )
+}
+
+function ForgotForm({
+  email,
+  setEmail,
+  loading,
+  error,
+  onSubmit,
+  onBack,
+}: {
+  email: string
+  setEmail: (v: string) => void
+  loading: boolean
+  error: string | null
+  onSubmit: (e: React.FormEvent) => void
+  onBack: () => void
+}) {
+  return (
+    <>
+      <h2 className="text-xl font-bold text-[var(--foreground)] font-display tracking-wide">
+        Recuperar contraseña
+      </h2>
+      <p className="text-sm text-[var(--muted-foreground)] mt-1">
+        Ingresa tu correo y te enviaremos un enlace para restablecer tu contraseña.
+      </p>
+
+      <form onSubmit={onSubmit} className="mt-6 flex flex-col gap-3">
+        <Field
+          label="Correo electrónico"
+          type="email"
+          value={email}
+          onChange={setEmail}
+          placeholder="tu@correo.com"
+          autoFocus
+        />
+
+        {error && <p className="text-sm text-red-500">{error}</p>}
+
+        <button
+          type="submit"
+          disabled={loading}
+          className="mt-2 flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg text-sm font-semibold bg-[#FF6B1A] hover:bg-[#c95900] disabled:opacity-60 text-white transition-colors"
+        >
+          {loading && <Loader2 size={16} className="animate-spin" />}
+          Enviar instrucciones
+        </button>
+      </form>
+
+      <p className="text-sm text-[var(--muted-foreground)] mt-5 text-center">
+        <button onClick={onBack} className="font-semibold text-[#FF6B1A] hover:underline">
+          Volver al inicio de sesión
+        </button>
+      </p>
+    </>
+  )
+}
+
+function ForgotSuccess({ onBack }: { onBack: () => void }) {
+  return (
+    <div className="flex flex-col items-center text-center gap-4 py-4">
+      <div className="w-12 h-12 rounded-full bg-orange-100 dark:bg-orange-950 flex items-center justify-center">
+        <svg className="w-6 h-6 text-[#FF6B1A]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+        </svg>
+      </div>
+      <div>
+        <h2 className="text-xl font-bold text-[var(--foreground)] font-display tracking-wide">
+          Revisa tu correo
+        </h2>
+        <p className="text-sm text-[var(--muted-foreground)] mt-2 leading-relaxed">
+          Si el correo está registrado, recibirás las instrucciones en tu bandeja de entrada. El enlace expira en <strong>1 hora</strong>.
+        </p>
+      </div>
+      <button onClick={onBack} className="text-sm font-semibold text-[#FF6B1A] hover:underline mt-2">
+        Volver al inicio de sesión
+      </button>
     </div>
   )
 }

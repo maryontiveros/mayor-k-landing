@@ -2,7 +2,7 @@
 
 import { create } from 'zustand'
 
-type AuthMode = 'login' | 'register'
+type AuthMode = 'login' | 'register' | 'forgot'
 
 interface UIState {
   cartOpen: boolean

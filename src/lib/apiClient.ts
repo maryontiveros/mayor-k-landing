@@ -79,6 +79,14 @@ export function getMe(token: string): Promise<Customer> {
   return request<Customer>('/v1/customer/me', { token })
 }
 
+export function forgotCustomerPassword(email: string): Promise<{ message: string }> {
+  return request<{ message: string }>('/v1/customer/forgot-password', { method: 'POST', body: { email } })
+}
+
+export function resetCustomerPassword(token: string, password: string): Promise<{ message: string }> {
+  return request<{ message: string }>('/v1/customer/reset-password', { method: 'POST', body: { token, password } })
+}
+
 // ----- Métodos de pago y envío (públicos) -----
 
 export function fetchPaymentMethods(): Promise<PaymentMethod[]> {
