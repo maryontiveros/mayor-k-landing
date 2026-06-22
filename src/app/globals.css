@@ -64,30 +64,3 @@ body {
   transition: background-color 0.3s, color 0.3s;
 }
 
-/* Comprobante imprimible: al imprimir, solo se muestra #receipt como factura. */
-@media print {
-  body {
-    overflow: visible !important;
-  }
-  body * {
-    visibility: hidden;
-  }
-  #receipt,
-  #receipt * {
-    visibility: visible;
-    overflow: visible !important;
-    max-height: none !important;
-  }
-  #receipt {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    padding: 24px;
-    color: #111827;
-    background: #ffffff;
-  }
-  .no-print {
-    display: none !important;
-  }
-}

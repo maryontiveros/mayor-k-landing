@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { X, Printer, Download, Loader2 } from 'lucide-react'
+import { X, Download, Loader2 } from 'lucide-react'
 import type { Order } from '@/lib/api'
 import { formatUSD, orderNumber } from '@/lib/format'
 import { ORDER_STATUS } from '@/lib/orderStatus'
@@ -157,22 +157,15 @@ export function OrderDetailModal({ order, customerName, onClose }: Props) {
           )}
         </div>
 
-        {/* Acciones (no se imprimen) */}
-        <div className="no-print px-6 sm:px-8 pb-6 sm:pb-8 flex gap-2">
+        {/* Acciones */}
+        <div className="px-6 sm:px-8 pb-6 sm:pb-8 flex justify-center">
           <button
             onClick={downloadPdf}
             disabled={downloading}
-            className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg text-sm font-semibold bg-[#FF6B1A] hover:bg-[#c95900] disabled:opacity-60 text-white transition-colors"
+            className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold bg-[#FF6B1A] hover:bg-[#c95900] disabled:opacity-60 text-white transition-colors"
           >
-            {downloading ? <Loader2 size={16} className="animate-spin" /> : <Download size={16} />}
+            {downloading ? <Loader2 size={14} className="animate-spin" /> : <Download size={14} />}
             Descargar PDF
-          </button>
-          <button
-            onClick={() => window.print()}
-            className="flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg text-sm font-semibold border border-[var(--border)] text-[var(--foreground)] hover:bg-[var(--muted)] transition-colors"
-          >
-            <Printer size={16} />
-            Imprimir
           </button>
         </div>
       </div>
