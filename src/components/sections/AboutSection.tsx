@@ -1,4 +1,4 @@
-import { ShieldCheck, Award, Users } from 'lucide-react'
+import { ShieldCheck, Award, Users, Target, Eye, HeartHandshake } from 'lucide-react'
 
 export function AboutSection() {
   return (
@@ -18,6 +18,47 @@ export function AboutSection() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="flex flex-col items-center text-center p-6 rounded-2xl bg-[var(--muted)] border border-[var(--border)]">
+            <div className="w-14 h-14 flex items-center justify-center rounded-full bg-[#1A6BFF]/10 mb-4">
+              <Target size={28} className="text-[#1A6BFF]" />
+            </div>
+            <h3 className="text-xl font-bold text-[var(--foreground)] mb-2">Misión</h3>
+            <p className="text-[var(--muted-foreground)] text-sm leading-relaxed">
+              Crear oportunidades de provecho para nuestros clientes y brindar un servicio de calidad en alianza con
+              los mejores proveedores, para lograr un crecimiento integral en nuestro entorno.
+            </p>
+          </div>
+
+          <div className="flex flex-col items-center text-center p-6 rounded-2xl bg-[var(--muted)] border border-[var(--border)]">
+            <div className="w-14 h-14 flex items-center justify-center rounded-full bg-[#FF6B1A]/10 mb-4">
+              <Eye size={28} className="text-[#FF6B1A]" />
+            </div>
+            <h3 className="text-xl font-bold text-[var(--foreground)] mb-2">Visión</h3>
+            <p className="text-[var(--muted-foreground)] text-sm leading-relaxed">
+              Distinguirnos como la mejor opción de compra en una amplia variedad de productos para nuestros
+              clientes en todo el centro-occidente del país.
+            </p>
+          </div>
+
+          <div className="flex flex-col items-center text-center p-6 rounded-2xl bg-[var(--muted)] border border-[var(--border)]">
+            <div className="w-14 h-14 flex items-center justify-center rounded-full bg-[#1A6BFF]/10 mb-4">
+              <HeartHandshake size={28} className="text-[#1A6BFF]" />
+            </div>
+            <h3 className="text-xl font-bold text-[var(--foreground)] mb-2">Valores</h3>
+            <div className="flex flex-wrap justify-center gap-2">
+              {['Excelencia', 'Pasión', 'Constancia', 'Comunicación', 'Compromiso'].map((valor) => (
+                <span
+                  key={valor}
+                  className="px-3 py-1 rounded-full text-xs font-semibold bg-[#FF6B1A]/10 text-[#FF6B1A] dark:bg-[#FF8A4C]/15 dark:text-[#FF8A4C]"
+                >
+                  {valor}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
           <div className="flex flex-col items-center text-center p-6 rounded-2xl bg-[var(--muted)] border border-[var(--border)]">
             <div className="w-14 h-14 flex items-center justify-center rounded-full bg-[#FF6B1A]/10 mb-4">
               <Award size={28} className="text-[#FF6B1A]" />
