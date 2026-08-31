@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import { ThemeToggle } from '@/components/ui/ThemeToggle'
 
 export function Footer() {
   return (
@@ -39,8 +40,11 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-8 pt-6 border-t border-white/10 text-center text-sm text-white/50">
-          © {new Date().getFullYear()} Mayor K C.A. — RIF J-410044535. Todos los derechos reservados.
+        <div className="mt-8 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-center sm:justify-between gap-3 text-sm text-white/50">
+          <span className="text-center">
+            © {new Date().getFullYear()} Mayor K C.A. — RIF J-410044535. Todos los derechos reservados.
+          </span>
+          <ThemeToggle />
         </div>
       </div>
     </footer>

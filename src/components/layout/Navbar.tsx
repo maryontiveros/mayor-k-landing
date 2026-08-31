@@ -3,10 +3,12 @@
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { Menu, X, LogIn } from 'lucide-react'
-import { ThemeToggle } from '@/components/ui/ThemeToggle'
-
-const APP_URL = process.env.NEXT_PUBLIC_APP_URL || '#'
+import { Menu, X, User, Package, LogOut, ShoppingCart } from 'lucide-react'
+import { CartButton, AccountButton } from '@/components/layout/HeaderActions'
+import { useCustomerAuth } from '@/store/customerAuth'
+import { useUI } from '@/store/ui'
+import { useCart, cartCount } from '@/store/cart'
+import { toast } from '@/store/toast'
 
 const navLinks = [
   { label: 'Inicio', href: '#inicio' },
@@ -19,6 +21,11 @@ const navLinks = [
 export function Navbar() {
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const { customer, hasHydrated, logout } = useCustomerAuth()
+  const openAuth = useUI((s) => s.openAuth)
+  const openCart = useUI((s) => s.openCart)
+  const items = useCart((s) => s.items)
+  const count = cartCount(items)
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40)
@@ -54,22 +61,16 @@ export function Navbar() {
         </ul>
 
         <div className="flex items-center gap-2">
-          <ThemeToggle />
-          <a
-            href={APP_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hidden md:inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold border border-white/30 hover:border-white/60 text-white/80 hover:text-white transition-colors"
-          >
-            <LogIn size={15} />
-            Acceso
-          </a>
           <Link
             href="/catalogo"
             className="hidden md:inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold bg-[#FF6B1A] hover:bg-[#c95900] text-white transition-colors"
           >
             Ver Catálogo
           </Link>
+          <div className="hidden md:block">
+            <AccountButton />
+          </div>
+          <CartButton />
           <button
             className="md:hidden text-white p-2"
             onClick={() => setOpen(!open)}
@@ -95,24 +96,66 @@ export function Navbar() {
               </li>
             ))}
             <li>
+              <button
+                onClick={() => {
+                  setOpen(false)
+                  openCart()
+                }}
+                className="w-full flex items-center justify-center gap-2 px-4 py-2 rounded-lg font-semibold border border-white/30 text-white/80 hover:text-white transition-colors"
+              >
+                <ShoppingCart size={16} />
+                Carrito{count > 0 ? ` (${count})` : ''}
+              </button>
+            </li>
+            <li>
               <Link
                 href="/catalogo"
-                className="block mt-2 px-4 py-2 rounded-lg text-center font-semibold bg-[#FF6B1A] hover:bg-[#c95900] text-white transition-colors"
+                onClick={() => setOpen(false)}
+                className="block px-4 py-2 rounded-lg text-center font-semibold bg-[#FF6B1A] hover:bg-[#c95900] text-white transition-colors"
               >
                 Ver Catálogo
               </Link>
             </li>
-            <li>
-              <a
-                href={APP_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 mt-1 px-4 py-2 rounded-lg text-center font-semibold border border-white/30 text-white/80 hover:text-white transition-colors"
-              >
-                <LogIn size={15} />
-                Acceso vendedores
-              </a>
-            </li>
+            {hasHydrated && customer ? (
+              <>
+                <li>
+                  <Link
+                    href="/mis-pedidos"
+                    onClick={() => setOpen(false)}
+                    className="flex items-center justify-center gap-2 px-4 py-2 rounded-lg font-semibold border border-white/30 text-white/80 hover:text-white transition-colors"
+                  >
+                    <Package size={16} />
+                    Mis pedidos
+                  </Link>
+                </li>
+                <li>
+                  <button
+                    onClick={() => {
+                      logout()
+                      setOpen(false)
+                      toast('Sesión cerrada', 'info')
+                    }}
+                    className="w-full flex items-center justify-center gap-2 px-4 py-2 rounded-lg font-semibold border border-white/30 text-white/80 hover:text-white transition-colors"
+                  >
+                    <LogOut size={16} />
+                    Cerrar sesión
+                  </button>
+                </li>
+              </>
+            ) : (
+              <li>
+                <button
+                  onClick={() => {
+                    setOpen(false)
+                    openAuth('login')
+                  }}
+                  className="w-full flex items-center justify-center gap-2 px-4 py-2 rounded-lg font-semibold border border-white/30 text-white/80 hover:text-white transition-colors"
+                >
+                  <User size={16} />
+                  Inicia Sesión
+                </button>
+              </li>
+            )}
           </ul>
         </div>
       )}

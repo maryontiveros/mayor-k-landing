@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { ThemeToggle } from '@/components/ui/ThemeToggle'
+import { CartButton, AccountButton } from '@/components/layout/HeaderActions'
 
 interface CatalogHeaderProps {
   title?: string
@@ -43,7 +43,10 @@ export function CatalogHeader({ title = 'Catálogo' }: CatalogHeaderProps) {
           <span className="text-white/60 text-sm font-medium truncate">{title}</span>
         </div>
 
-        <ThemeToggle />
+        <div className="flex items-center gap-2 shrink-0">
+          <AccountButton />
+          <CartButton />
+        </div>
       </div>
     </header>
   )
