@@ -10,7 +10,7 @@ export function ProductCard({ product, onClick }: { product: PublicProduct; onCl
       {product.onSale && (
         <div className="absolute top-0 left-0 z-10 overflow-hidden w-24 h-24 pointer-events-none">
           <div className="absolute top-4 -left-8 w-32 text-center bg-red-600 text-white text-[10px] font-bold tracking-wider py-1 shadow-md -rotate-45">
-            OFERTA
+            OUTLET
           </div>
         </div>
       )}
